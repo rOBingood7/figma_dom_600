@@ -8,21 +8,7 @@ const patterns = {
 const inps = document.querySelectorAll('input')
 const form = document.querySelector('form')
 
-form.onsubmit = (e) => {
-    e.preventDefault()
-    
-    if(inps.length > 0) {
-        Toastify({
-            text: "This is a toast",
-            className: "info",
-            style: {
-              background: "linear-gradient(to right, #00b09b, #96c93d)",
-            }
-          }).showToast();
-    }
 
-    form.reset()
-}
 
 
 
@@ -37,6 +23,24 @@ inps.forEach(inp => {
             inp.style.borderColor = "red"
         } 
         patterns[inp.name].lastIndex = 0
+    }
+
+    form.onsubmit = (e) => {
+        e.preventDefault()
+        
+        if(inp.length > 0) {
+            Toastify({
+                text: "This is a toast",
+                className: "info",
+                style: {
+                  background: "linear-gradient(to right, #00b09b, #96c93d)",
+                }
+              }).showToast();
+        } else {
+            alert('error')
+        }
+    
+        form.reset()
     }
 }) 
 
